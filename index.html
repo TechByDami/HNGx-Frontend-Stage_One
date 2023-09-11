@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Stage One</title>
+  </head>
+  <body>
+    <img
+      class="profile_pics"
+      data-testid="slackDisplayImage"
+      src="./assets/profilepix.jpeg"
+      alt="Agboola Olawale Damilola"
+    />
+    <p class="name" data-testid="slackUserName">AGBOOLA OLAWALE DAMILOLA</p>
+    <p class="track" data-testid="myTrack">Track: Frontend Developer</p>
+    <div class="date">
+      <div class="day">
+        <img class="calender_icon" src="./assets/calender.svg" alt="" />
+        <p data-testid="currentDayOfTheWeek"></p>
+      </div>
+      <div class="time">
+        <img class="clock_icon" src="./assets/clock.svg" alt="" />
+        <p data-testid="currentUTCTime"></p>
+      </div>
+    </div>
+    <div class="stack">
+      <img class="github_icon" src="./assets/github.svg" alt="github" />
+      <a
+        href="https://github.com/TechByDami/HNGx-Frontend-Stage_One"
+        target="_blank"
+        data-testid="githubURL"
+        >Source Code</a
+      >
+    </div>
+
+    <script>
+      function currentdateTime() {
+        const currentDayElement = document.querySelector(
+          '[data-testid="currentDayOfTheWeek"]'
+        );
+        const currentTimeElement = document.querySelector(
+          '[data-testid="currentUTCTime"]'
+        );
+
+        const currentDate = new Date();
+        const currentDay = currentDate.toLocaleDateString("en-US", {
+          weekday: "long",
+        });
+        const currentTime = currentDate.toLocaleTimeString("en-US");
+
+        currentDayElement.textContent = `${currentDay}`;
+        currentTimeElement.textContent = `${currentTime}`;
+      }
+
+      // Update date and time immediately
+      currentdateTime();
+
+      // Update date and time every second
+      setInterval(currentdateTime, 1000);
+    </script>
+  </body>
+</html>
